@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @SpringBootApplication
 @Controller
-@ComponentScan(basePackages="com")
+@ComponentScan(basePackages = "com")
 
-@EntityScan(basePackages="com")
-@EnableJpaRepositories(basePackages="com")
+@EntityScan(basePackages = "com")
+@EnableJpaRepositories(basePackages = "com")
 public class CustomerfeedbackApplication {
-	 @GetMapping("/feedback") 
-	 public String feedback() {
-		 return "feedback"; 
-		 }
-	 
+	@GetMapping("/feedback")
+	public String feedback() {
+		return "feedback";
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(CustomerfeedbackApplication.class, args);
 	}

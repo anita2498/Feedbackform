@@ -15,27 +15,25 @@ import com.example.Repository.UserCrudRepository;
 @RequestMapping("feedback")
 public class FeedbackController {
 
-    @Autowired
-    UserCrudRepository userCrudRepository;
+	@Autowired
+	UserCrudRepository userCrudRepository;
 
+	@PostMapping("/submit")
+	public String userRegister(@RequestParam("name") String name, @RequestParam("email") String email,
+			@RequestParam("feedback1") String feedback1) {
+		Feedback f = new Feedback(name, email, feedback1);
+		boolean data = addFeedback(f);
+		if (data) {
+			return "Your Feedback has been added succesfully!";
+		} else {
+			return "Unable to add the feedback";
+		}
 
-    @PostMapping("/submit")
-	public String userRegister(@RequestParam("name") String name, @RequestParam("email") String email , @RequestParam("feedback1") String feedback1) {
-	Feedback f = new Feedback(name,email,feedback1);
-	boolean data= addFeedback(f);
-	if(data) {
-		return "Your Feedback has been added succesfully!";
 	}
-	else {
-		return "Unable to add the feedback";
-	}
-		
-	}
 
-public boolean addFeedback( Feedback f) {
-	userCrudRepository.save(f);
-	return true;
-}
-
+	public boolean addFeedback(Feedback f) {
+		userCrudRepository.save(f);
+		return true;
+	}
 
 }
